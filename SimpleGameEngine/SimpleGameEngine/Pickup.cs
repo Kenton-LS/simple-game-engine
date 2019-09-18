@@ -42,5 +42,6 @@ public class Pickup{
 
         x = r.Next(0, maxX);
         y = r.Next(0, maxY);
+        //
     }
 }
