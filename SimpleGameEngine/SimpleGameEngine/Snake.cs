@@ -135,12 +135,19 @@ public class Snake{
 
             It should return false otherwise.
         */
+        bool isHeadTouchingBody = false;
         for(int i = 1; i < segments.Count; i++)
         {
-
+            if(segments[0].X == segments[i].X)
+            {
+                isHeadTouchingBody = true;
+            }
+            else
+            {
+                isHeadTouchingBody = false;
+            }
         }
-
-        return false;
+        return isHeadTouchingBody;
     }
 
     public void Update(){
@@ -152,6 +159,17 @@ public class Snake{
             yDir = 1;
             xDir = 0;
         }
+        else if (Input.KeyPressed == InputType.LEFT)
+        {
+            yDir = 0;
+            xDir = -1;
+        }
+        else if (Input.KeyPressed == InputType.RIGHT)
+        {
+            yDir = 0;
+            xDir = 1;
+        }
+
         /*  ------------------------------------------
             2.5
             ------------------------------------------   
@@ -165,7 +183,7 @@ public class Snake{
             We will now need to update the x and y positions of the snake
             using the equation:
                 direction * speed * deltaTime
-                
+
             -   We can say that the speed is in units per second.
             -   deltaTime gives use the time passed since the last update,
                 which is usually less than a second an differs from one
@@ -183,6 +201,7 @@ public class Snake{
             DeltaTime property.
         */
 
-        //x = xDir * spped * Time.DeltaTime;
+        x = xDir * speed * Time.DeltaTime;
+        y = yDir * speed * Time.DeltaTime;
     }
 }
