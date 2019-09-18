@@ -25,6 +25,10 @@ public class Snake{
             using the values passed to the constructor
         */
 
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+
         
         /*  Adds a segment to the segments List
             This segment will serve as the head of the snake. */
@@ -86,6 +90,8 @@ public class Snake{
             3. use the segments.Add method to add the newSegment to the back of
             the segments List.
         */
+
+
     }
 
     public void UpdateSegments(){
