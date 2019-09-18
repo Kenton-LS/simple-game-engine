@@ -64,6 +64,9 @@ class Program
                 This way we can store the previous position of the snake before
                 we update it
             */
+            int prevSnakeX = snake.X;
+            int prevSnakeY = snake.Y;
+            snake.Update();
 
             /*  ------------------------------------------
                 4.2
@@ -75,9 +78,19 @@ class Program
                 This will allow us to only make updates to the game
                 if the snake moved.
             */
-            if (true)
+           
+            if (snake.X != prevSnakeX || snake.Y != prevSnakeY)
             {
 
+                 if(snake.X == pickup.X && snake.Y == pickup.Y)
+                 {
+                    score = score + 100;
+                    Canvas.WriteMessageTop(score, ConsoleColor);
+                    SPEED_INCREASE = SPEED_INCREASE + 0.1;
+                    snake.AddSegment();
+                    pickup.SetPosition();
+                 }
+    
                 /*  ------------------------------------------
                     4.3
                     ------------------------------------------   
@@ -106,6 +119,13 @@ class Program
                     -   Call the Beep method of the Console class.
                     -   Break out of the game loop.
                 */
+
+                if(Snake.isHeadTouchingBody == false || isSnakeInBounds == false)
+                {
+
+                }
+
+
 
                 //This method call will update the positions of all the snake segments.
                 snake.UpdateSegments();
