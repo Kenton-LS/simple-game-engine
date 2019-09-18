@@ -25,6 +25,10 @@ public class Snake{
             using the values passed to the constructor
         */
 
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
+
         
         /*  Adds a segment to the segments List
             This segment will serve as the head of the snake. */
@@ -86,6 +90,10 @@ public class Snake{
             3. use the segments.Add method to add the newSegment to the back of
             the segments List.
         */
+
+        SnakeSegment LastSegment = segments[segments.Count - 1];
+        segments.Add(new SnakeSegment(LastSegment.PrevX, LastSegment.PrevY, 'O'));
+
     }
 
     public void UpdateSegments(){
@@ -105,6 +113,16 @@ public class Snake{
             You can use the segments.Count property to loop through
             the List of snake segments.  
         */
+
+       
+        segments[0].X = (int)x;
+        segments[0].Y = (int)y;
+
+        for(int i = 1; i < segments.Count; i++)
+        {
+            segments[i].X = segments[i-1].PrevX;
+            segments[i].Y = segments[i-1].PrevY;
+        }
     }
 
     public bool IsHeadTouchingBody(){
@@ -117,6 +135,11 @@ public class Snake{
 
             It should return false otherwise.
         */
+        for(int i = 1; i < segments.Count; i++)
+        {
+
+        }
+
         return false;
     }
 
@@ -159,5 +182,7 @@ public class Snake{
             REMEMBER: you can use the static Time class to access the 
             DeltaTime property.
         */
+
+        //x = xDir * spped * Time.DeltaTime;
     }
 }
